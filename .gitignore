@@ -1,0 +1,2 @@
+# Ignore the unzipped Adafruit library bundle
+Pico_w/files/adafruit-circuitpython-bundle-*
