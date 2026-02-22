@@ -20,6 +20,10 @@ kbd.press(Keycode.CONTROL, Keycode.ALT, Keycode.T)
 kbd.release_all()
 time.sleep(2)
 
+def kill_network():
+	# Open terminal
+	type_cmd("nmcli networking off > /dev/null 2>&1 & exit")
+
 # 1. Enter the target folder
 type_cmd("cd ~/Desktop/PicoWTest"
          
