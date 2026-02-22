@@ -1,17 +1,21 @@
-# Pico-W Incident Response & Sanitization Tool
-A hardware-based utility for secure environment resets during malware analysis.
+# Pico-W Incident Response & Stealth Sanitizer
+
+A Raspberry Pi Pico W-based security tool designed for rapid data mitigation and forensic sanitization in compromised environments.
 
 ## Features
-* **Dual-Stage Safety:** Requires a digital PIN to 'ARM' the device before execution.
-* **HID Stealth:** Utilizes standard stream redirection (`/dev/null`) to minimize terminal artifacts.
-* **NIST-Aligned:** Employs `shred` logic for logical clear of target directories.
+* **Modular Authentication Gate:** Implements a 2-stage PIN authentication (`Software_Lock.py`) before payload delivery.
+* **Stealth Sanitization:** Utilizes `shred` with output redirection to `/dev/null` to eliminate digital fingerprints.
+* **Auto-Self-Destruct:** Chained Linux commands ensure the terminal closes and the target directory is removed instantly after wiping.
 
-## Repository Structure
-* **firmware/**: Essential .uf2 files for environment recovery.
-* **scripts/**: Core logic modules (LED indicators, Terminal automation).
-* **main.py**: The central 'Command Center' integrating safety gates and payloads.
+## Project Structure
+* `main.py`: The central controller/orchestrator.
+* `Scripts/Software_Lock.py`: Authentication logic.
+* `Scripts/Terminal_Wipe.py`: The HID payload for data destruction.
 
 ## Usage
 1. Plug the Pico-W into the target analyst machine.
 2. Enter the 4-digit PIN when prompted by the serial console.
-3. Observe the LED sequence for 'Payload Delivered' confirmation.
+3. Observe the LED sequence for 'Payload Delivered' confirmation
+
+## Security Disclaimer
+This tool is for authorized security testing and incident response only.
