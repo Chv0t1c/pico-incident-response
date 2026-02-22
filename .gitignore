@@ -1,2 +1,20 @@
 # Ignore the unzipped Adafruit library bundle
 Pico_w/files/adafruit-circuitpython-bundle-*
+
+# Sensitive Credentials
+secrets.py
+*.env
+tokens.txt
+
+# Python Environment & Libraries
+__pycache__/
+*.py[cod]
+lib/
+adafruit_hid/
+
+# System & Editor Files
+.DS_Store
+.thumbs.db
+.vscode/
+.idea/
+*.swp
