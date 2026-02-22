@@ -26,10 +26,7 @@ type_cmd("cd ~/Desktop/PicoWTest"
 # 2. Shred all the files inside the first! (Overwrites data)
 type_cmd("shred -vzu -n 1 * > /dev/null 2>&1")
 
-# 3. Go back up and remove the now-empty, shredded folder
-type_cmd("cd .. && rm -rf PicoWTest")
-
-# Stealth Exit
-type_cmd("exit")
+# 3. Go back up and remove the now-empty, shredded folder, and exit
+type_cmd("cd .. && rm -rf PicoWTest & exit")
 
 print("Sanitization Complete!")
